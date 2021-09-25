@@ -6,7 +6,9 @@ pygame.init()
 #color
 white=(255, 255, 255)
 red=(255,0,0)
+pink1=(255, 127, 127)
 black=(0,0,0)
+pink=(255, 134, 100)
 
 # display
 screen_height=600
@@ -63,8 +65,8 @@ def gameloop():
 
             if game_over :
                   gameWindow.fill(white)
-                  text_screen("Game Over! Press Enter To Continue",red,150,250)
-                  text_screen("Score:"+str(score * 5),black, 160, 223)
+                  text_screen("Game Over! Press Enter To Continue",black,150,250)
+                  text_screen("Score:"+str(score * 5),red, 160, 223)
                   for event in pygame.event.get():
 
                         if event.type == pygame.QUIT:
@@ -82,7 +84,7 @@ def gameloop():
                               exit_game = True
                         if event.type == pygame.KEYDOWN:
                               if event.key == pygame.K_RIGHT:
-                                    #snake_x = snake_x+10
+                              
                                     velocity_x=init_velocity
                                     velocity_y=0
 
@@ -111,9 +113,9 @@ def gameloop():
 
                         snk_length+=5
                   
-                  gameWindow.fill(white)
+                  gameWindow.fill(black)
                   # function score display
-                  text_screen("Score:"+str(score * 5),red, 2, 3)
+                  text_screen("Score:"+str(score * 5),pink1, 2, 3)
                   # ..
                   head=[]
                   head.append(snake_x)
@@ -133,11 +135,11 @@ def gameloop():
 
                               
                         
-                  plot_snake(gameWindow,black,snk_list,snake_size)
+                  plot_snake(gameWindow,pink,snk_list,snake_size)
                   
                   
                   pygame.draw.rect(gameWindow, red, [food_x,food_y, snake_size, snake_size])
-                  pygame.draw.rect(gameWindow, black, [snake_x,snake_y, snake_size, snake_size])
+                  pygame.draw.rect(gameWindow, white, [snake_x,snake_y, snake_size, snake_size])
             pygame.display.update()
 
             clock.tick(fps)
